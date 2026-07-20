@@ -1,19 +1,3 @@
-// import React from 'react'
-
-// const App = () => {
-//   return (
-//     <>
-//     <h1>hello from the react app of ahmed dehwar </h1>
-      
-//     </>
-//   )
-// }
-
-// export default App
-
-
-
-
 
 // import React, { useState } from 'react'
 // const App = () => {
@@ -59,6 +43,70 @@
 
 
 
+//todo appp start
+
+
+
+
+
+import { useState } from "react"
+
+const app =()=>{
+    const[input, setInput]=useState('');
+   const [todo , settodo]= useState([]);
+const addtodo = (event)=>{
+    event.preventDefault()
+    console.log(input);
+    settodo([...todo,input])
+    setInput('')//bad ma input ko empty kara ga
+
+    
+}
+const updatetodo= (feature , index)=>{
+    console.log(feature , index);
+     
+    if (feature === "delete") {
+        todo.splice(index , 1);
+        settodo([...todo])
+        return
+        
+    }
+    const updateval = prompt("enter udated val" , todo [index])
+    settodo([...todo])
+       
+       
+       
+       return (
+       <>
+        <h1>hello from todo app</h1>
+        <form onSubmit={addtodo}>
+        <input type="text" placeholder='enter todo' value={input} onChange={(e)=> setInput (e.target.value)}  />
+        <button type='submit'>add todo</button>
+        
+        </form>
+        
+       <ol>
+        {todo.map ((item , index) =>{
+            return <li key = {index} > {item}
+            <button onClick={()=> updatetodo("delete",index)}>delete</button>
+            <button onClick={()=> updatetodo("edit",index)}>edit</button>
+                
+                
+                
+                
+                 </li>
+        }
+    
+    
+    
+    )}
+        
+        </ol> 
+        </>
+        )
+        }
+
+}
 
 
 
@@ -66,6 +114,8 @@
 
 
 
+
+export default app
 
 
 
